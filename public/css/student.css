@@ -1,0 +1,76 @@
+body{
+  background-color:#00cec9;
+  font-family: 'Baloo Bhaina 2', cursive; 
+
+}
+
+.box-index{
+  display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 122px auto;
+    flex-direction: column;
+}
+
+.all-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  display: block;
+  width: 50%;
+  margin:22px auto;
+}
+.all-items h1{
+  text-decoration: underline;
+}
+.all-items p{
+  font-size: 25px
+}
+.vote-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  display: block;
+  width: 50%;
+  margin:22px auto;
+}
+.vote-items h1{
+  text-decoration: underline;
+}
+.nameItem{
+  display: inline;
+  font-size: 20px;
+}
+.formItem{
+  display: inline;
+}
+
+#votebtn{
+  border-radius: 10px;
+  padding: 5px 30px;
+  margin: 9px 36px;
+  font-size: 20px;
+cursor: pointer;
+background-color: rgba(0, 0, 0, 0.301);
+color: whitesmoke;
+}
+
+#votebtn:hover{
+  color: black;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }

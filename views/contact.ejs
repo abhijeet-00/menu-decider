@@ -1,0 +1,29 @@
+<%- include("partials/header"); -%>
+<div class="contact-form my-4 m-auto">
+    <form action="" method="POST">
+        <fieldset>
+           <h1>Get in touch with us</h1>
+            <div class="px-5">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Your Email address:</label>
+                    <input type="email" class="form-control" id="Email" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="Subject" class="form-label">Your message Subject:</label>
+                    <input type="text" class="form-control" id="Subject" placeholder="Subject for message">
+                </div>
+                <div class="mb-3">
+                    <label for="Message" class="form-label">Your message:</label>
+                    <textarea class="form-control" id="Message" rows="4"
+                        placeholder="Your Message goes here..."></textarea>
+                </div>
+                <button class="btn btn-primary send-message" type="submit">Send Message</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<%- include("partials/footer"); -%>
