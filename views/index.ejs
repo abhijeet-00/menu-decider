@@ -1,45 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Menu-Decider</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Ms+Madi&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Ms+Madi&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Courgette&family=Ms+Madi&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@600&family=Cookie&family=Courgette&family=Josefin+Sans:wght@100;400&family=Josefin+Slab:wght@100&family=Ms+Madi&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <h1>Menu-Decider</h1>
-        </div>
-        <div class="menu">
-          <a href="/">HOME</a>
-          <a href="/incharge">INCHARGE</a>
-          <a href="/about">ABOUT</a>
-          <a href="/contact">CONTACT</a>
-        </div>
-      </nav>
-    </header>  
-      <main>
-        <section>
-            <div class="box-index">
-              <h1>Welcome To this Webiste</h1>
-              <h3>The secret ingredient is always cheese</h3>
-              <p>First, we eat. Then, we do everything else</p>
-              <a href="/register" class="btnone">Register</a>
-              <a href="/login" class="btntwo">LogIn</a>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">   
+<link rel="stylesheet" href="/css/style.css">
+    <title>Menu-Decider</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+        <div class="container">
+            <a href="/" class="navbar-brand">Menu-Decider</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navid">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navid">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/incharge" class="nav-link">Incharge</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
             </div>
            
-        </section>
-    </main>
+        </div>
 
+    </nav>
+    <div class="word"></div>
+    <div class="heading">
+        <p><i class="bi bi-emoji-wink-fill"></i>First, we eat. Then, we do everything else</p>
+        <div class="buttons">
+          <button type="button" class="btn btn-info btn-lg btn-outline-info register"><i class="bi bi-bag-check-fill"></i><a href="/register">Register</a> </button>
+          <button type="button" class="btn btn-dark btn-lg btn-outline-dark login"> <i class="bi bi-door-open-fill"></i> <a href="/login">LogIn</a> </button>
+        </div>
+    </div>
+    
+   <script>
+    var words = ['Eat Drink and Be Happy'],
+    part,
+    i = 0,
+    offset = 0,
+    len = words.length,
+    forwards = true,
+    skip_count = 0,
+    skip_delay = 15,
+    speed = 70;
+var wordflick = function () {
+  setInterval(function () {
+    if (forwards) {
+      if (offset >= words[i].length) {
+        ++skip_count;
+        if (skip_count == skip_delay) {
+          forwards = false;
+          skip_count = 0;
+        }
+      }
+    }
+    else {
+      if (offset == 0) {
+        forwards = true;
+        i++;
+        offset = 0;
+        if (i >= len) {
+          i = 0;
+        }
+      }
+    }
+    part = words[i].substr(0, offset);
+    if (skip_count == 0) {
+      if (forwards) {
+        offset++;
+      }
+      else {
+        offset--;
+      }
+    }
+    $('.word').text(part);
+  },speed);
+};
 
-
+$(document).ready(function () {
+  wordflick();
+});
+   </script>
 </body>
 </html>
-  

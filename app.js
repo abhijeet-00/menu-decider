@@ -10,6 +10,7 @@ require("./db/conn");
 const Register=require("./models/students");
 const Item=require("./models/items");
 const Vote=require("./models/vote");
+const Feedback=require("./models/feedback");
 const { application } = require('express');
 const { default: mongoose } = require('mongoose');
 const saltRounds=4;
@@ -38,7 +39,9 @@ app.get("/incharge",function(req,res){
 app.get("/login",function(req,res){
     res.render("login");
 })
-
+app.get("/studentfeedback",function(req,res){
+          res.render("studentfeedback",{studentName:name});
+})
 
 app.get("/messmenu",auth ,(req,res)=>{
    Item.find({}).sort({ vote: 'desc' }).limit(10).exec(function(err, docs) {
@@ -48,8 +51,14 @@ app.get("/messmenu",auth ,(req,res)=>{
   
     });
    
-   
-  
+})
+app.get("/inchargefeedback",(req,res)=>{
+    
+    Feedback.find(function(err,allFeedbacks){
+        if(!err){
+          res.render("inchargefeedback",{allFeedbacks:allFeedbacks});
+        }
+      })
 })
 app.get("/allitems",(req,res)=>{
     
@@ -107,6 +116,9 @@ app.get("/password",(req,res)=>{
 })
 app.get("/invalid",(req,res)=>{
     res.render("invalid");
+})
+app.get("/voted",(req,res)=>{
+    res.render("voted");
 })
 app.post("/incharge",function(req,res){
     const username=process.env.INCHARGE;
@@ -209,12 +221,23 @@ app.post("/login",async function(req,res){
     
    
 })
+app.post("/studentfeedback",function(req,res){
+    const feedback=req.body.feedback;
+    const newFeedback=new Feedback({
+        feedback:feedback
+    })
+    newFeedback.save();
+    res.redirect("/studentfeedback");
+})
 app.post("/additems",function(req,res){
     const itemName=req.body.item;
-    const newItem=new Item({
-        itemName:itemName
-    })
-    newItem.save();
+    if(itemName[0]!=' '){
+        const newItem=new Item({
+            itemName:itemName
+        })
+        newItem.save();
+    }
+   
     res.redirect("/additems");
 })
 
@@ -222,17 +245,17 @@ app.post("/vote",function(req,res){
 
     const itemName=req.body.name;
     var voted=false;
+
         Vote.find({itemName:itemName},function(err,docs){
             var flag=false;
-           if(docs){
+           if(!err){
                docs.forEach(function(element){
                    if(element.rollno==voterollno){
-                       console.log("yes");
                        voted=true;
                       flag=true;
                    }
                })
-             
+
                if(flag===false){
                 const newVote=new Vote({
                     itemName:itemName,
@@ -240,6 +263,10 @@ app.post("/vote",function(req,res){
                 })
                 newVote.save();
             }
+            else{
+                return res.redirect("/voted");
+            }
+          
            }  
          
             else{
@@ -265,13 +292,75 @@ app.post("/vote",function(req,res){
                 res.redirect("/vote");
             }
         })
-  
+
 })
 
 app.get("*",(req,res)=>{
     res.render("404");
 })
+app.get("/login/*",(req,res)=>{
+    res.render("404");
+})
 
+    app.get("/register/*",function(req,res){
+        res.render("404");
+    })
+    app.get("/incharge/*",function(req,res){
+        res.render("404");
+    })
+    
+    app.get("/studentfeedback",function(req,res){
+        res.render("404");
+    })
+    
+    app.get("/messmenu/*",auth ,(req,res)=>{
+        res.render("404");
+       
+    })
+    app.get("/inchargefeedback/*",(req,res)=>{
+        
+        res.render("404");
+    })
+    app.get("/allitems/*",(req,res)=>{
+        
+        res.render("404");
+    })
+    app.get("/about/*",(req,res)=>{
+        
+        res.render("404");
+    })
+    app.get("/vote/*",function(req,res){
+        res.render("404");
+    })
+    app.get("/studenthome/*",function(req,res){
+        res.render("404");
+    })
+   
+    app.get("/additems/*",function(req,res){
+        res.render("404");
+    })
+    
+    app.get("/contact/*",function(req,res){
+        res.render("404");
+    })
+    app.get("/notregistered/*",function(req,res){
+        res.render("404");
+    })
+    app.get("/notregister/*",(req,res)=>{
+        res.render("404");
+    })
+    app.get("/filldetails/*",(req,res)=>{
+        res.render("404");
+    })
+    app.get("/studentexists/*",(req,res)=>{
+        res.render("404");
+    })
+    app.get("/password/*",(req,res)=>{
+        res.render("404");
+    })
+    app.get("/invalid/*",(req,res)=>{
+        res.render("404");
+    })
 app.listen(port,function(req,res){
     console.log(`Server is running at port ${port}`);
 })

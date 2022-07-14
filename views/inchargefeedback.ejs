@@ -1,0 +1,21 @@
+<%- include("partials/header2"); -%>
+  
+<div class="main-items">
+  
+  
+    <div class="all-items ">
+  
+      <h1>Student Feedbacks</h1> 
+      <%  allFeedbacks.forEach(function(element){  %>
+          <div class="show-items">
+          <p> <i class="bi bi-chat-square-text"></i>
+            <%= element.feedback %> 
+          </p> 
+              
+              <%  })  %>
+          </div>
+  </div>
+  </div>
+  
+   
+    <%- include("partials/footer"); -%>
