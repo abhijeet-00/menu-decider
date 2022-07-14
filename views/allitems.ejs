@@ -1,21 +1,22 @@
 <%- include("partials/header2"); -%>
 
 <div class="main-items">
-  <div class="all-items">
+  
+  
+  <div class="all-items ">
 
-    <h1>This page contains all the items that are added by Incharge</h1>
-
+    <h1>All Items with votes</h1> 
     <%  allitems.forEach(function(element){  %>
         <div class="show-items">
         
-          <p><%= element.itemName %> having votes <%= element.vote %> </p> 
+          <p> <i class="bi bi-balloon-fill"></i>
+            <%= element.itemName %> having votes <%= element.vote %>
+           </p> 
          
             
             <%  })  %>
         </div>
-     
-  
-  </div>
+</div>
 </div>
 
 

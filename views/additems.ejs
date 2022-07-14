@@ -3,17 +3,22 @@
     <main>
         <div class="main-box">
         
-            <div class="box-incharge">
+            <div class="box-incharge container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="heading">Add Items</h1>
+                    </div>
                
-                
-                    <h1 id="heading">Add Items</h1>
-                  
-               
-                <form action="/additems" method="post">
-                    <input type="text" placeholder="Enter new Item" name="item">
-                    <button type="submit" id="addbutton">Add</button>
-                </form>
+                        <form action="/additems" method="post" autocomplete="off">
+                                    <input type="text"  name="item" >
+                                    <button type="submit" id="addbutton">Add</button>
+                           
+                        </form>
+                   
+                    </div>
            
+                
+                    
              
             </div>
         </div>

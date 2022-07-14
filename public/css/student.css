@@ -1,6 +1,6 @@
 body{
-  background-color:#00cec9;
-  font-family: 'Baloo Bhaina 2', cursive; 
+  background: linear-gradient(135deg, rgba(43,171,217,1) 0%, rgba(0,130,200,1) 100%);
+    font-family: "Montserrat", Arial;
 
 }
 
@@ -23,6 +23,13 @@ body{
   display: block;
   width: 50%;
   margin:22px auto;
+  background-color: #F8F8F8;
+    border-radius: 1.5em;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 
+      0 8px 8px rgba(0, 0, 0, 0.1),
+      0 16px 16px rgba(0, 0, 0, 0.1), 
+      0 32px 32px rgba(0, 0, 0, 0.15),
+      0 64px 64px rgba(0, 0, 0, 0.15);
 }
 .all-items h1{
   text-decoration: underline;
@@ -31,7 +38,6 @@ body{
   font-size: 25px
 }
 .vote-items{
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -39,6 +45,16 @@ body{
   display: block;
   width: 50%;
   margin:22px auto;
+  border-radius: 20px;
+  margin-bottom: 100px;
+  background-color: #F8F8F8;
+  height: 500px; 
+  overflow-y : auto;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 
+  0 8px 8px rgba(0, 0, 0, 0.1),
+  0 16px 16px rgba(0, 0, 0, 0.1), 
+  0 32px 32px rgba(0, 0, 0, 0.15),
+  0 64px 64px rgba(0, 0, 0, 0.15);
 }
 .vote-items h1{
   text-decoration: underline;
@@ -57,12 +73,19 @@ body{
   margin: 9px 36px;
   font-size: 20px;
 cursor: pointer;
-background-color: rgba(0, 0, 0, 0.301);
-color: whitesmoke;
+
 }
 
 #votebtn:hover{
-  color: black;
+  color: whitesmoke;
+}
+
+.feedback-box{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .footer {
